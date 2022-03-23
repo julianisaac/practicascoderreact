@@ -1,0 +1,28 @@
+/* Nav menu */
+nav{
+    margin-left: 20%;
+    position: fixed;
+    top: 0;
+    width: 80%;
+    height: 50px;
+    background: linear-gradient(45deg, rgb(216, 238, 240), midnightblue);   
+}
+
+.list {
+    list-style-type: none;
+    background: linear-gradient(45deg, rgb(156, 14, 156));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.items {
+    margin-right: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color:white;
+    cursor: pointer;
+}
+
