@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCount from '../ItemCount'
+import ItemList from './ItemList';
 
 const ItemListContainer = ({greeting}) => {
 
@@ -10,8 +11,7 @@ const ItemListContainer = ({greeting}) => {
   return (
     <>
         <h5>{greeting}</h5>
-        <ItemCount nombreProducto={"Monitor 24 pulgadas"} stock={10} onAgregarAlCarrito={onAgregarAlCarrito}></ItemCount>
-        <ItemCount nombreProducto={"Teclado inalambrico"} stock={0} onAgregarAlCarrito={onAgregarAlCarrito}></ItemCount>
+        <ItemList/>
     </>
   )
 }
