@@ -17,11 +17,12 @@ const ItemList = () => {
         }
     })()
 
-}, [])
+  }, [])
 
   return (
     <>
             <div>
+            <h1>Listado</h1>
                 {productos.map(prod => {
                      return <Item 
                       key={prod.id} 

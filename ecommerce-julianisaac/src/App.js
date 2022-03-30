@@ -1,12 +1,15 @@
 import './App.css';
-import ItemListContainer from './components/ItemListContainer';
+import ItemListContainer from './containers/ItemListContainer';
 import NavBar from './components/NavBar';
+import ItemDetailContainer from './containers/ItemDetailContainer';
 
 function App() {
   return (
     <div>
       <NavBar/>
-      <ItemListContainer greeting={"Mi primera app en react"}/>
+      <ItemDetailContainer/>
+      <br/><br/><br/>
+      <ItemListContainer/>
     </div>    
   );
 }
