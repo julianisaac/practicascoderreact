@@ -1,8 +1,8 @@
 import React from 'react';
 ;
-const Item = ({id, title, descripcion, price, pictureUrl, stock}) => {
+const Item = ({id, title, descripcion, price, pictureUrl, stock, onClick}) => {
   return (
-    <div className='card'>
+    <div className='card' onClick={onClick}>
         <h2>{title} (Id: {id})</h2>
         <div className='container'>
           <img src={pictureUrl} alt="imagen" width="100" height="100"/>

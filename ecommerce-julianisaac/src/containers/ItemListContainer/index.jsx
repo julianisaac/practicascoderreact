@@ -1,11 +1,14 @@
 import React from 'react'
-import ItemList from './ItemList';
+import ItemList from '../../components/ItemList';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
 
+  const { id } = useParams() //Siempre trae un string
+
   return (
     <>
-        <ItemList/>
+        <ItemList categoriaId={id}/>
     </>
   )
 }

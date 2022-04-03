@@ -1,17 +1,26 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Item from '../Item';
 
-const ItemList = () => {
+const ItemList = ({categoriaId}) => {
 
   const [productos, setProductos] = useState ([]);
+  const navigate = useNavigate();
   
   useEffect(()=> {
-    console.log("useEffect inicio ");
+    console.log(`categoriaId: ${categoriaId}`);
     ( async ()=> {
         try {
-            const response = await fetch('/data.json');
+            const response = await fetch(`https://fakestoreapi.com/products`)
             const data = await response.json();
-            setProductos(data);
+            if (categoriaId) {
+              const productosFiltrados = data.filter(prod => prod.category === categoriaId)
+              setProductos(productosFiltrados);
+            }
+            else{
+              setProductos(data);
+            }
+            
         } catch (error) {
             console.log(error);
         }
@@ -31,7 +40,9 @@ const ItemList = () => {
                       id={prod.id} 
                       descripcion={prod.description}
                       stock='10'
-                      pictureUrl={prod.image}/>
+                      pictureUrl={prod.image}
+                      onClick={() => navigate(`/item/${prod.id}`)}
+                      />
                 })}
             </div>
       </>
