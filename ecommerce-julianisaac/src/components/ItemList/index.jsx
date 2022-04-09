@@ -33,14 +33,9 @@ const ItemList = ({categoriaId}) => {
             <div>
             <h1>Listado</h1>
                 {productos.map(prod => {
-                     return <Item 
+                     return <Item  
                       key={prod.id} 
-                      title={prod.title} 
-                      price={prod.price} 
-                      id={prod.id} 
-                      descripcion={prod.description}
-                      stock='10'
-                      pictureUrl={prod.image}
+                      producto={prod}
                       onClick={() => navigate(`/item/${prod.id}`)}
                       />
                 })}
