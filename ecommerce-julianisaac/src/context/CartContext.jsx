@@ -17,8 +17,8 @@ const CartContext = ({children}) => {
         } else {
             setCart([...cart, { ...product, quantity: cantidadAAgregar }]);
         }
-
     }
+
     //Función auxiliar que me determina si el producto está o no en el cart por ID
     const isInCart = (producto) => {
         return cart.find(elemento => elemento.id === producto.id);
@@ -32,15 +32,11 @@ const CartContext = ({children}) => {
     //elimina item del carrito
     const removeItem = (producto) =>{
         if(isInCart(producto))
-        {   // esto no funciona
-            //cart.delete(producto);
-        }
+            cart.splice(producto);
     } 
 
     return (
-        <Cart.Provider value = {{
-            cart, addCart, clear, removeItem
-        }}>
+        <Cart.Provider value = {{cart, addCart, clear, removeItem}}>
             {children}
         </Cart.Provider>
     )

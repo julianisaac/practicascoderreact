@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cart from '../../context/CartContext';
+import {Cart} from '../../context/CartContext';
 import ItemCount from '../ItemCount';
 
 const ItemDetail = ({producto}) => {
