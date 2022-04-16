@@ -1,21 +1,22 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Cart} from '../../context/CartContext';
+import {Carrito} from '../../context/CartContext';
 import ItemCount from '../ItemCount';
 
 const ItemDetail = ({producto}) => {
 
   const [cantidad, setCantidad] = React.useState(0)
   const navigate = useNavigate();
-  const {addCart} = useContext(Cart);
+  const {addCart} = useContext(Carrito);
 
   const onAgregarAlCarrito = (cant) => {
+    console.log(`Se agregaron ${cant} productos al carrito`);
+    addCart(producto, cant);
     setCantidad(cant);
   }
 
   const handleTerminate = () => {
     console.log(`Terminó la compra - Cantidad: ${cantidad}`);
-    addCart(producto, cantidad);
     navigate(`/Cart`);
   }
   
