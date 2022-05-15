@@ -3,14 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopStack from '../Stacks/Shop';
 import CartStack from '../Stacks/Cart';
 import OrderStack from '../Stacks/Orders';
-import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
 
     return (
-        <NavigationContainer>
             <Tab.Navigator
             screenOptions={{
                 headerShown: false
@@ -20,7 +18,6 @@ const TabNavigator = () => {
                 <Tab.Screen name="Cart" component={CartStack} />
                 <Tab.Screen name="Orders" component={OrderStack}/>
             </Tab.Navigator>
-        </NavigationContainer>
     );
 }
 

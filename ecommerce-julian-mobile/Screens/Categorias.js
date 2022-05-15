@@ -1,18 +1,13 @@
 import {Text, View, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import { obtenerDatos } from '../Services/fetch';
 import globalStyle from '../Styles/Global';
+import { Carrito } from '../context/CartContext';
 
 
 const Categorias = ({navigation}) => {
 
-  const [categorias, setCategorias] = useState([]);
-
-  useEffect(() => {
-    ( async ()=> {
-      setCategorias(await obtenerDatos('https://fakestoreapi.com/products/categories'));
-    })()    
-  },[])
+  const {categorias} = useContext(Carrito);
   
   const handleCategory = (categoriaId) => {
     navigation.navigate('Productos', {
@@ -29,18 +24,18 @@ const Categorias = ({navigation}) => {
           <FlatList
             data={categorias}
             renderItem={( {item} ) => { 
-              return <TouchableOpacity onPress={() =>  handleCategory(item)} > 
+              return <TouchableOpacity onPress={() =>  handleCategory(item.categoria)} > 
 
                 <View style={globalStyle.mainCardView}>
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                      <Text style={globalStyle.textoCards}>{item}</Text>  
+                      <Text style={globalStyle.textoCards}>{item.categoria}</Text>  
                   </View>
                 </View>
 
               </TouchableOpacity>
             }
           }
-          keyExtractor={item => item.toString()}
+          keyExtractor={item => item.id}
           />
           :
           <ActivityIndicator size={'large'} color={'blue'} />

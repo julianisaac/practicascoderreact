@@ -1,9 +1,17 @@
-import {Text, View, Image, StyleSheet} from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import globalStyle from '../Styles/Global';
+import {useContext} from 'react';
+import { Carrito } from '../context/CartContext';
 
 const Detalle = ({route}) => {
 
+  const {addCart} = useContext(Carrito);
+
   const {item} = route.params;
+
+  const handleAdd = () => {
+    addCart(item, 1)
+  }
 
   return (
     <View >
@@ -25,6 +33,9 @@ const Detalle = ({route}) => {
         </View>
       </View>
 
+      <TouchableOpacity onPress={handleAdd}>
+            <Text>Add to cart</Text>
+      </TouchableOpacity>
 
     </View>
   )
