@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
-import {useContext, useState} from 'react';
-import ConfirmCompraModal from '../Components/ConfirmCompraModal';
+import { useContext, useState} from 'react';
 import { Carrito } from '../context/CartContext';
+import ConfirmCompraModal from '../Components/ConfirmCompraModal';
 
 const CartScreen = () => {
 

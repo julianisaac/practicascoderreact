@@ -19,8 +19,6 @@ const Productos = ({route, navigation}) => {
       setProductosFiltrados(productFilter);
     })()
 
-    console.log(productosFiltrados);
-
   }, [categoria])
 
   const handleProducto = (item) => {

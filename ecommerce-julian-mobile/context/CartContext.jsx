@@ -8,15 +8,21 @@ const CartContext = ({children}) => {
 
     const [cart, setCart] = useState([]);
     const [categorias, setCategorias] = useState([]);
-    const [productos, setProductos] = useState([])
+    const [productos, setProductos] = useState([]);
+    const [ordenes, setOrdenes] = useState([]);
 
     useEffect(()=> {
 
         (async ()=>{
+            
             const queryCollection = query(collection(db, "productos"))
             const queryCollectionCategories = query(collection(db, "categorias"))
+            const queryCollectionOrdenes = query(collection(db, "ordenes"))
+            
             const querySnapshot = await getDocs(queryCollection);
-            const querySnapshotCategories = await getDocs(queryCollectionCategories)
+            const querySnapshotCategories = await getDocs(queryCollectionCategories);
+            const querySnapshotOrdenes = await getDocs(queryCollectionOrdenes)
+            
             const prods = []
             querySnapshot.forEach((doc)=> {
                 const producto = {id: doc.id, ...doc.data()}
@@ -29,8 +35,16 @@ const CartContext = ({children}) => {
                 categs.push(categoria);
             })
 
-            setProductos([...prods])
-            setCategorias([...categs])
+            const orders = []
+            querySnapshotOrdenes.forEach((doc)=> {
+                const orden = {id: doc.id, ...doc.data()};
+                orders.push(orden);
+            })
+
+            setProductos([...prods]);
+            setCategorias([...categs]);
+            setOrdenes([...orders]);
+
         })()
 
     }, [])
@@ -78,7 +92,7 @@ const CartContext = ({children}) => {
     };
        
     return (
-        <Carrito.Provider value = {{productos, categorias, addCart, clear, removeItem, sumaTotal}}>
+        <Carrito.Provider value = {{productos, categorias, ordenes, addCart, clear, removeItem, sumaTotal}}>
             {children}
         </Carrito.Provider>
     )

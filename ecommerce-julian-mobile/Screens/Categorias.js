@@ -1,6 +1,5 @@
 import {Text, View, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
-import {useContext, useEffect, useState} from 'react';
-import { obtenerDatos } from '../Services/fetch';
+import {useContext} from 'react';
 import globalStyle from '../Styles/Global';
 import { Carrito } from '../context/CartContext';
 

@@ -6,7 +6,7 @@ import { Carrito } from '../context/CartContext';
 
 const ConfirmCompraModal = () => {
 
-    const {cart} = useContext(Carrito);
+  const {cart} = useContext(Carrito);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [nombre, setNombre] = useState("");
