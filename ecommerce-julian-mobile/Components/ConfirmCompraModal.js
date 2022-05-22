@@ -51,7 +51,7 @@ const ConfirmCompraModal = () => {
           console.log(outOfStock);
 
           if (outOfStock.length === 0) {
-            addDoc(collection(db, 'orders'), orderGenerada).then(({ id }) => {
+            addDoc(collection(db, 'ordenes'), orderGenerada).then(({ id }) => {
               batch.commit().then(() => {
                 setCheckoutText(`Se genero la order con id:  + ${id}`)
               })
