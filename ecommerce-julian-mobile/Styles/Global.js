@@ -59,6 +59,13 @@ export default StyleSheet.create({
       fontWeight: 'bold',
       textTransform: 'capitalize',
       width: '70%'
+    },
+    button: {
+      width: 200,
+      marginTop: 10,
+      backgroundColor: "green",
+      padding: 5,
+      borderRadius: 10
     }    
   });
   

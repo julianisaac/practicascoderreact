@@ -1,18 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { useContext, useState} from 'react';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
+import { useContext, useState, useEffect} from 'react';
 import { Carrito } from '../context/CartContext';
 import ConfirmCompraModal from '../Components/ConfirmCompraModal';
+import CartItem from '../Components/CartItem';
+import globalStyle from '../Styles/Global';
 
 const CartScreen = () => {
 
-  const {cart} = useContext(Carrito);
+  const [total, setTotal] = useState(0);
+  const {cart, sumaTotal, removeItem} = useContext(Carrito);
   const [modalVisible, setModalVisible] = useState(false)  
+
+  const fnRender = ({ item }) => {
+    return (
+      <CartItem
+        item={item}
+        handleRemove={removeItem}
+      />
+    )
+  }
+
+  useEffect(() => {
+    const sumaTotalProds = sumaTotal();
+    setTotal(sumaTotalProds);
+  }, [cart.cart])
 
   return (
     <View>
       {cart.length !== 0 ?
         <>
-          <Text>Cart</Text>
           <FlatList
             data={cart}
             keyExtractor={item => item.id}
@@ -21,7 +37,7 @@ const CartScreen = () => {
           </FlatList>
           <View>
             <Text>Total: {(total.toFixed(1))}</Text>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <TouchableOpacity onPress={() => setModalVisible(true)} style={globalStyle.button}>
               <Text>Purchase</Text>
             </TouchableOpacity>
           </View>
@@ -29,7 +45,7 @@ const CartScreen = () => {
         :
         <Text>No hay productos en el cart</Text>
       }
-      <ConfirmCompraModal/>
+      <ConfirmCompraModal modalVisible={true}/>
     </View>
   )
 }

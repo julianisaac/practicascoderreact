@@ -78,21 +78,19 @@ const CartContext = ({children}) => {
 
     //elimina item del carrito
     const removeItem = (producto) =>{
+        console.log(producto.id);
         if(isInCart(producto))
             cart.splice(producto);
+        else
+            console.log('No encontro el producto para sacar');
     } 
 
     const sumaTotal = () => {
-        console.log(cart);
-        const suma = cart.reduce(
-          (accion, producto) => (accion += producto.price * producto.quantity),
-          0
-        );
-        return suma;
+        return cart.reduce((accion, producto) => (accion += producto.price * producto.quantity), 0);
     };
        
     return (
-        <Carrito.Provider value = {{productos, categorias, ordenes, addCart, clear, removeItem, sumaTotal}}>
+        <Carrito.Provider value = {{productos, categorias, ordenes, addCart, clear, removeItem, sumaTotal, cart}}>
             {children}
         </Carrito.Provider>
     )

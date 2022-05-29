@@ -31,7 +31,7 @@ const MainNavigator = () => {
 
     return (
         <NavigationContainer>
-            {true ?
+            {user ?
                 <TabNavigator></TabNavigator>
                 :
                 <Auth />

@@ -33,7 +33,7 @@ const Detalle = ({route}) => {
         </View>
       </View>
 
-      <TouchableOpacity onPress={handleAdd} style={styles.button}>
+      <TouchableOpacity onPress={handleAdd} style={globalStyle.button}>
             <Text style={styles.btnText}>Add to cart</Text>
       </TouchableOpacity>
 
@@ -63,13 +63,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     marginLeft: 16,
     marginRight: 16,  },
-  button: {
-      width: 200,
-      marginTop: 10,
-      backgroundColor: "green",
-      padding: 5,
-      borderRadius: 10
-    },
   btnText: {
       color: "white",
       fontSize: 20,
