@@ -66,6 +66,21 @@ export default StyleSheet.create({
       backgroundColor: "green",
       padding: 5,
       borderRadius: 10
+    },
+    inputView: {
+      backgroundColor: "antiquewhite",
+      borderRadius: 30,
+      width: "70%",
+      height: 120,
+      marginBottom: 50,
+      alignItems: "center",
+      marginTop: 50,
+      alignSelf: "center"
+    },    
+    textInput: {
+      height: 50,
+      flex: 1,
+      padding: 10,
+      marginLeft: 20,
     }    
   });
-  

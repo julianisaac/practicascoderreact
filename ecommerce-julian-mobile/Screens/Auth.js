@@ -55,36 +55,47 @@ const Auth = () => {
     }
     
     return (
-        <View style={globalStyle.mainCardView}>
-            <View  style={{flexDirection: 'column'}}>
-                <Text>{loginView ? 'Login' : 'Registro de usuario'}</Text>                
+        <View style={globalStyle.inputView}>
+            <View>
+                <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>{loginView ? 'Login' : 'Registro de usuario'}</Text>                
                 <TextInput
                     value={email}
                     onChangeText={setEmail}
                     placeholder="Ingrese email"
-                    style={globalStyle.textoCards}
+                    style={globalStyle.textInput}
                 ></TextInput>
                 <TextInput
                     secureTextEntry={true}
                     value={password}
                     onChangeText={setPassword}
                     placeholder="Ingrese password"
-                    style={globalStyle.textoCards}
+                    style={globalStyle.textInput}
                 ></TextInput>
                 {loginView ?
                     <TouchableOpacity onPress={handleLogin}>
-                        <Text>Login</Text>
+                        <Text style={{fontWeight: 'bold', alignSelf: 'center', borderWidth: 1, width: 200, borderRadius: 10, textAlign: "center"}}>Login</Text>
                     </TouchableOpacity>
                     :
                     <TouchableOpacity onPress={handleSignup}>
-                        <Text>Sign up</Text>
+                        <Text style={{fontWeight: 'bold', alignSelf: 'center', borderWidth: 1, width: 200, borderRadius: 10, textAlign: "center"}}>Sign up</Text>
                     </TouchableOpacity>
                 }
-                <View style={{flexDirection: 'column', flex:'10'}}>
+                <View style={{height: 170,
+                                marginBottom: 50,
+                                alignItems: "center",
+                                marginTop: 50,
+                                alignSelf: "center"}}>
                     <Text style={globalStyle.textoCards}>{loginView ? 'No tienes usuario?' : 'Ya tienes usuario?'}</Text>
                     <TouchableOpacity
                         onPress={() => setLoginView(!loginView)}>
-                        <Text>
+                        <Text style={{  width: 200,
+                                        marginTop: 10,
+                                        backgroundColor: "antiquewhite",
+                                        padding: 5,
+                                        borderRadius: 10,
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                            }}>
                             {loginView ? 'sign up' : 'sign in'}
                         </Text>
                     </TouchableOpacity>
